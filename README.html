@@ -1515,10 +1515,19 @@ analysis for EEG analysis</h1>
 <p>This is README for the Matlab analysis of EEG connectivity data used
 at the infant labs at the University Utrecht and the UMC Utrecht.</p>
 </div>
-<div id="requirements" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> Requirements</h2>
-<div id="matlab-packages" class="section level3" number="1.2.1">
-<h3><span class="header-section-number">1.2.1</span> Matlab
+<div id="installation-of-toolbox" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Installation of
+toolbox</h2>
+<p>Clone into the github repository. Using
+<code>git clone https://github.com/bavadeve/eeg-connectivity-pipeline</code>
+on the command line of any terminal software you use. Then open MATLAB
+and add the resulting folder on your harddrive to the path. Then
+continue onto the next section.</p>
+</div>
+<div id="requirements" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Requirements</h2>
+<div id="matlab-packages" class="section level3" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> Matlab
 Packages</h3>
 <ul>
 <li>Signal Processing Toolbox</li>
@@ -1531,8 +1540,8 @@ Packages</h3>
 <li>Computer Vision Toolbox</li>
 </ul>
 </div>
-<div id="matlab-toolboxes" class="section level3" number="1.2.2">
-<h3><span class="header-section-number">1.2.2</span> Matlab
+<div id="matlab-toolboxes" class="section level3" number="1.3.2">
+<h3><span class="header-section-number">1.3.2</span> Matlab
 toolboxes</h3>
 <ul>
 <li><a href="https://www.fieldtriptoolbox.org/">Fieldtrip</a></li>
@@ -1540,8 +1549,8 @@ toolboxes</h3>
 Toolbox</a></li>
 </ul>
 </div>
-<div id="included-scripts" class="section level3" number="1.2.3">
-<h3><span class="header-section-number">1.2.3</span> Included
+<div id="included-scripts" class="section level3" number="1.3.3">
+<h3><span class="header-section-number">1.3.3</span> Included
 scripts</h3>
 <p>These matlab scripts are required to run the entirety of the
 pipeline. Short descriptions are given here. Please refer for more
@@ -1816,18 +1825,18 @@ be used</li>
 </ul>
 </div>
 </div>
-<div id="the-pipeline-explained" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> The pipeline
+<div id="the-pipeline-explained" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> The pipeline
 explained</h2>
 <p>Here, I will outline all the steps needed to run the pipeline. As an
 example, I’m using neonatal EEG data from the FUTURE project; however,
 you should be able to adjust these steps to work with your data as well.
 Note that all steps must be performed within MATLAB.</p>
-<div id="create-folder-structure" class="section level3" number="1.3.1">
-<h3><span class="header-section-number">1.3.1</span> Create folder
+<div id="create-folder-structure" class="section level3" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> Create folder
 structure</h3>
-<div id="create-new-analysis" class="section level4" number="1.3.1.1">
-<h4><span class="header-section-number">1.3.1.1</span> Create new
+<div id="create-new-analysis" class="section level4" number="1.4.1.1">
+<h4><span class="header-section-number">1.4.1.1</span> Create new
 analysis</h4>
 <p>First, we need to create the folder structure required for the
 analysis. For this we can run the <em>bv_createNewAnalysis</em>
@@ -1857,26 +1866,26 @@ running the pipeline a few times without parallel processing to
 familiarize yourself with the process and understand each step. Once
 comfortable, you can enable parallel processing to speed things up.</p>
 </div>
-<div id="check-paths" class="section level4" number="1.3.1.2">
-<h4><span class="header-section-number">1.3.1.2</span> Check paths</h4>
+<div id="check-paths" class="section level4" number="1.4.1.2">
+<h4><span class="header-section-number">1.4.1.2</span> Check paths</h4>
 <p>Open the <em>setPaths.m</em> script in MATLAB and change paths where
 necessary. It is likely that you at least need to change the location of
 you fieldtrip install (PATHS.FTPATH)</p>
 </div>
-<div id="move-files-to-folders" class="section level4" number="1.3.1.3">
-<h4><span class="header-section-number">1.3.1.3</span> Move files to
+<div id="move-files-to-folders" class="section level4" number="1.4.1.3">
+<h4><span class="header-section-number">1.4.1.3</span> Move files to
 folders</h4>
 <p>Add your files to the folders. So add all edf/bdf/eeg files to the
 RAW folder. And add all the questionnaires and extra files you want to
 use in your analysis to the files folder.</p>
 </div>
-<div id="set-options" class="section level4" number="1.3.1.4">
-<h4><span class="header-section-number">1.3.1.4</span> Set options</h4>
+<div id="set-options" class="section level4" number="1.4.1.4">
+<h4><span class="header-section-number">1.4.1.4</span> Set options</h4>
 <p>Open the <em>setOptions.m</em> and change any options you want. For
 now, I would only change the <em>general options</em> (first code block)
 and the <em>create subject folder options</em> (second code block).</p>
-<div id="general-options" class="section level5" number="1.3.1.4.1">
-<h5><span class="header-section-number">1.3.1.4.1</span> General
+<div id="general-options" class="section level5" number="1.4.1.4.1">
+<h5><span class="header-section-number">1.4.1.4.1</span> General
 options</h5>
 <p>Only</p>
 <pre class="r"><code>OPTIONS.subjectString           = &#39;&#39; # &#39;string&#39;: unique search string for raw eeg files 
@@ -1897,8 +1906,8 @@ using.
 </ol></li>
 </ol>
 </div>
-<div id="create-subject-folder-options" class="section level5" number="1.3.1.4.2">
-<h5><span class="header-section-number">1.3.1.4.2</span> Create subject
+<div id="create-subject-folder-options" class="section level5" number="1.4.1.4.2">
+<h5><span class="header-section-number">1.4.1.4.2</span> Create subject
 folder options</h5>
 <p>Here, only</p>
 <pre class="r"><code>OPTIONS.CREATEFOLDERS.rawdelim      = &#39;&#39;; # delimiter found in raw eeg files
@@ -1944,8 +1953,8 @@ formatting.</p>
 </div>
 </div>
 </div>
-<div id="create-subject-folders" class="section level3" number="1.3.2">
-<h3><span class="header-section-number">1.3.2</span> Create subject
+<div id="create-subject-folders" class="section level3" number="1.4.2">
+<h3><span class="header-section-number">1.4.2</span> Create subject
 folders</h3>
 <p>Open the <em>preprocessingData.m</em>, you should now be able to run
 the part of the code that create the subject folders:</p>
@@ -1965,8 +1974,8 @@ created (<em>110001_28w</em> and <em>110001_28w_2</em>). It is
 recommended to analyze each file separately and then select the
 recording with the fewest artifacts as the primary data for that
 subject.</p>
-<div id="the-cfg-variable" class="section level4" number="1.3.2.1">
-<h4><span class="header-section-number">1.3.2.1</span> The cfg
+<div id="the-cfg-variable" class="section level4" number="1.4.2.1">
+<h4><span class="header-section-number">1.4.2.1</span> The cfg
 variable</h4>
 <p>As you may have noticed in the previous step, this pipeline
 frequently utilizes a cfg variable, which is a MATLAB structure that
@@ -1977,8 +1986,8 @@ documentation of the individual functions for both FieldTrip and this
 pipeline to identify which fields in the cfg structures are required for
 each function to operate correctly.</p>
 </div>
-<div id="the-subject-folder" class="section level4" number="1.3.2.2">
-<h4><span class="header-section-number">1.3.2.2</span> The subject
+<div id="the-subject-folder" class="section level4" number="1.4.2.2">
+<h4><span class="header-section-number">1.4.2.2</span> The subject
 folder</h4>
 <p>In each subject folder, each intermediate analysis step is stored,
 unless you selected a script that does not save intermediate steps.
@@ -1991,8 +2000,8 @@ Subject.mat file—only that it is essential for the pipeline to function
 smoothly.</p>
 </div>
 </div>
-<div id="preprocessing-and-resampling" class="section level3" number="1.3.3">
-<h3><span class="header-section-number">1.3.3</span> Preprocessing and
+<div id="preprocessing-and-resampling" class="section level3" number="1.4.3">
+<h3><span class="header-section-number">1.4.3</span> Preprocessing and
 resampling</h3>
 <p>The second step of the analysis is to read in the data, to resample,
 to filter the data and - if necessary - cut out the specific parts to be
@@ -2019,8 +2028,8 @@ OPTIONS.PREPROC.channels        = bv_getNEOChannels(&#39;regular&#39;); # Change
 <p>Please check the help of <code>bv_preprocAndResample</code> for more
 information</p>
 </div>
-<div id="calculate-artefacts-in-preprocessed-data" class="section level3" number="1.3.4">
-<h3><span class="header-section-number">1.3.4</span> Calculate Artefacts
+<div id="calculate-artefacts-in-preprocessed-data" class="section level3" number="1.4.4">
+<h3><span class="header-section-number">1.4.4</span> Calculate Artefacts
 in Preprocessed Data</h3>
 <p>The third step is to calculate artifacts in the read-in and
 preprocessed data. By default, the data is segmented into trials of 1
@@ -2043,8 +2052,8 @@ OPTIONS.ARTFCTPREPROC.analyses        = {&#39;kurtosis&#39;,&#39;variance&#39;, 
 <p>Please refer to the help of <code>bv_artifactDetection</code> for
 more information</p>
 </div>
-<div id="set-channels-to-remove" class="section level3" number="1.3.5">
-<h3><span class="header-section-number">1.3.5</span> Set channels to
+<div id="set-channels-to-remove" class="section level3" number="1.4.5">
+<h3><span class="header-section-number">1.4.5</span> Set channels to
 remove</h3>
 <p>After artifact detection, channels are designated for removal based
 on the limits set by the researcher. The default limits specified in the
@@ -2129,8 +2138,8 @@ this limits the potential for interpolation.</li>
 <p>Please refer to the help of <code>bv_removeChannels</code> for more
 information</p>
 </div>
-<div id="preprocessing-without-removed-channels-rereferencing" class="section level3" number="1.3.6">
-<h3><span class="header-section-number">1.3.6</span> Preprocessing
+<div id="preprocessing-without-removed-channels-rereferencing" class="section level3" number="1.4.6">
+<h3><span class="header-section-number">1.4.6</span> Preprocessing
 without removed channels &amp; rereferencing</h3>
 <p>Now that we have identified the bad channels for each subject, we can
 redo the preprocessing. Rereferencing was omitted during the initial
@@ -2162,8 +2171,8 @@ interpolate any bad channels.</li>
 <p>Please refer to the help of <code>bv_preprocAndResample</code> for
 more information</p>
 </div>
-<div id="calculate-artifact-values-after-channel-removal" class="section level3" number="1.3.7">
-<h3><span class="header-section-number">1.3.7</span> Calculate artifact
+<div id="calculate-artifact-values-after-channel-removal" class="section level3" number="1.4.7">
+<h3><span class="header-section-number">1.4.7</span> Calculate artifact
 values after channel removal</h3>
 <p>Now that we have preprocessed the data again without the removed
 channels, while rereferencing the data, we need to re-calculated the
@@ -2172,8 +2181,8 @@ earlier in the analysis</p>
 <p>Please refer to the help of <code>bv_createArtefactStruct</code> for
 more information</p>
 </div>
-<div id="remove-poor-trials" class="section level3" number="1.3.8">
-<h3><span class="header-section-number">1.3.8</span> Remove poor
+<div id="remove-poor-trials" class="section level3" number="1.4.8">
+<h3><span class="header-section-number">1.4.8</span> Remove poor
 trials</h3>
 <p>Now we can remove the artefact-ridden trials based on the artefact
 structure calculated in the previous step. For this we use the
@@ -2183,8 +2192,8 @@ analysis.</p>
 <p>Please refer to the help of <code>bv_cleanData</code> for more
 information</p>
 </div>
-<div id="append-data" class="section level3" number="1.3.9">
-<h3><span class="header-section-number">1.3.9</span> Append data</h3>
+<div id="append-data" class="section level3" number="1.4.9">
+<h3><span class="header-section-number">1.4.9</span> Append data</h3>
 <p>After the cleaning, data is now cut into 1-second trials. This is
 generally not what we want. For connectivity analysis - especially of
 lower frequency band connectivity - we want the trials to be a bit
@@ -2196,8 +2205,8 @@ be changed for this step</p>
 <p>Please refer to the help of <code>bv_appendfieldtripdata</code> for
 more information</p>
 </div>
-<div id="pli-calculation" class="section level3" number="1.3.10">
-<h3><span class="header-section-number">1.3.10</span> PLI
+<div id="pli-calculation" class="section level3" number="1.4.10">
+<h3><span class="header-section-number">1.4.10</span> PLI
 calculation</h3>
 <p>Now, we can cut the appended data into trials with the
 <code>bv_calculatePLI</code> function. This is a tricky step. We have
@@ -2252,6 +2261,12 @@ OPTIONS.PLICONNECTIVITY.preprocOptions  = OPTIONS.REREF; # Preproc options for r
 OPTIONS.PLICONNECTIVITY.ntrials         = 120;</code></pre>
 <p>Please refer to the help of <code>bv_calculatePLI</code> for more
 options</p>
+</div>
+<div id="generate-results" class="section level3" number="1.4.11">
+<h3><span class="header-section-number">1.4.11</span> Generate
+results</h3>
+<p>Now you can generate the results. Please run the generateResults
+script and change things where necessary</p>
 </div>
 </div>
 </div>
