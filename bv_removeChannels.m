@@ -1,5 +1,5 @@
 function [data, subjectdata] = bv_removeChannels(cfg, data, artefactdef)
-% bv_removeChannels removes and repairs channels 
+% bv_removeChannels removes and repairs channels
 %
 % Use as
 %   [data] = bv_removeChannels(cfg)
@@ -26,7 +26,7 @@ function [data, subjectdata] = bv_removeChannels(cfg, data, artefactdef)
 %                           channel is removed (default = 40);
 %   cfg.maxtrials       = [ number ]: number of expected trials in dataset
 %   cfg.repairchans     = 'yes/no': set to 'yes' to interpolate channels
-%                           by weighting neighboring channels 
+%                           by weighting neighboring channels
 %                           (triangulation). Uses ft_channelrepair and
 %                           ft_prepare_neighbours
 %   cfg.quiet           = 'yes/no': set to 'yes' to prevent additional
@@ -39,10 +39,10 @@ function [data, subjectdata] = bv_removeChannels(cfg, data, artefactdef)
 %                           'setPaths'). Is created automatically by
 %                           bv_createNewAnalysis
 %   cfg.currSubject     = 'string': subject folder name to be analyzed
-%   cfg.inputName       = 'string': name of previous analysis to be used 
-%                           for this function, as in 
+%   cfg.inputName       = 'string': name of previous analysis to be used
+%                           for this function, as in
 %                           subjectdata.PATHS.(prevAnalysis)
-%   cfg.artefactData    = 'string': name of artefact data to be used for 
+%   cfg.artefactData    = 'string': name of artefact data to be used for
 %                           this function, as in
 %                           subjectdata.PATHS.(artefactData)
 %   cfg.saveData        = 'yes/no': specifies whether data needs to be
@@ -125,7 +125,7 @@ elseif isfield(cfg, 'currSubject')
     else
         eval(pathsFcn)
     end
-
+    
     if ~quiet; disp(currSubject); end
     subjectFolderPath = [PATHS.SUBJECTS filesep currSubject];
     if ~quiet
@@ -182,10 +182,9 @@ if not(isempty(subjectdata.channels2remove))
         data = [];
         return
     end
-
-
+    
     % badchannel interpolation
-    if strcmpi(repairchans, 'yes') 
+    if strcmpi(repairchans, 'yes')
         if ~quiet; fprintf('\t repairing ... '); end
         cfg = [];
         cfg.method          = 'triangulation';
@@ -207,7 +206,7 @@ if not(isempty(subjectdata.channels2remove))
 end
 
 if strcmpi(saveData, 'yes')
-
+    
     if ~quiet
         if strcmpi(repairchans, 'yes')
             bv_saveData(subjectdata, data, outputName); % save both data and subjectdata to the drive

@@ -1,10 +1,10 @@
 %% BEFORE WE START'
 % This is an overview script of all the preprocessing steps needed to be
-% taken before analyzing EEG data. 
+% taken before analyzing EEG data.
 %% setup subject folders
 clear OPTIONS; setOptions
 cfg = OPTIONS.CREATEFOLDERS;
-bv_createSubjectFolders_YOUth(cfg);
+bv_createSubjectFolders(cfg);
 
 %% PREPROCESSING AND RESAMPLING
 clear OPTIONS; setOptions
@@ -12,15 +12,15 @@ clear OPTIONS; setOptions
 [startSubject, endSubject, subjectFolderNames] = bv_getSubjectRange(1, 'end');
 updateWaitbar = waitbarParfor(length(startSubject:endSubject), "Preprocessing...");
 for iSubjects = startSubject:endSubject
-        currSubject = subjectFolderNames{iSubjects};
-        
-        cfg             = OPTIONS.PREPROC;
-        cfg.currSubject = currSubject;
-        cfg.quiet       = 'no';
-        
-        data = bv_preprocResample(cfg);
-        updateWaitbar();
-        
+    currSubject = subjectFolderNames{iSubjects};
+    
+    cfg             = OPTIONS.PREPROC;
+    cfg.currSubject = currSubject;
+    cfg.quiet       = 'no';
+    
+    data = bv_preprocResample(cfg);
+    updateWaitbar();
+    
 end
 %% CALCULATE ARTEFACTS IN PREPROC DATA
 clear OPTIONS; setOptions
@@ -35,7 +35,7 @@ for iSubjects = startSubject:endSubject
     cfg.currSubject = currSubject;
     
     artefactdef = bv_createArtefactStruct(cfg);
-    updateWaitbar(); 
+    updateWaitbar();
 end
 
 
@@ -70,7 +70,7 @@ for iSubjects = startSubject:endSubject
     
     data = bv_preprocResample(cfg);
     updateWaitbar();
-
+    
 end
 
 %% CALCULATE ARTEFACTS IN EEG DATA WITHOUT POOR CHANNELS
@@ -91,13 +91,13 @@ for iSubjects = startSubject:endSubject
     
 end
 
-%% REMOVE TRIALS 
+%% REMOVE TRIALS
 clear OPTIONS; setOptions
 
 [startSubject, endSubject, subjectFolderNames] = bv_getSubjectRange(1, 'end');
 updateWaitbar = waitbarfor(length(startSubject:endSubject), "Remove poor trials...");
 for iSubjects = startSubject:endSubject
-
+    
     currSubject = subjectFolderNames{iSubjects};
     
     cfg             = OPTIONS.CLEANED;
@@ -114,7 +114,7 @@ clear OPTIONS; setOptions
 [startSubject, endSubject, subjectFolderNames] = bv_getSubjectRange(1, 'end');
 updateWaitbar = waitbarfor(length(startSubject:endSubject), "Append data...");
 for iSubjects = startSubject:endSubject
-
+    
     cfg             = OPTIONS.APPENDED;
     cfg.currSubject = subjectFolderNames{iSubjects};
     cfg.quiet       = 'no';
@@ -132,7 +132,7 @@ clear OPTIONS; setOptions
 [startSubject, endSubject, subjectFolderNames] = bv_getSubjectRange(1, 'end');
 updateWaitbar = waitbarfor(length(startSubject:endSubject), "Append data...");
 for iSubjects = startSubject:endSubject
-
+    
     cfg             = OPTIONS.PLICONNECTIVITY;
     cfg.currSubject = subjectFolderNames{iSubjects};
     cfg.quiet       = 'no';

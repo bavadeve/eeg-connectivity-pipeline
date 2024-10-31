@@ -1,4 +1,4 @@
-function bv_createSubjectFolders_YOUth(cfg)
+function bv_createSubjectFolders(cfg)
 % bv_createSubjectFolders creates the folder structure necessary to run
 % analyses for infant EEG and adds an individual Subject.mat file in each
 % folder with individuals information and paths to important files.
@@ -11,22 +11,22 @@ function bv_createSubjectFolders_YOUth(cfg)
 %   cfg.rawdelim:       ' string ' with the delimiter found in the raw EEG
 %                       files (this is usually a '_' or a '-'
 %   cfg.rawlabel:       { cell } with strings labeling the different
-%                       elements of the raw file name. This information 
+%                       elements of the raw file name. This information
 %                       will then be automatically added to the Subject.mat
-%                       file in the function. As an example, look at this 
-%                       file name of YOUth: 
+%                       file in the function. As an example, look at this
+%                       file name of YOUth:
 %                       B00002_10m_facehouse_20181121_1019.bdf. So this
 %                       would be {'pseudo', 'wave', 'task', 'date',
-%                       'time'}. Note that you can also pick and choose 
+%                       'time'}. Note that you can also pick and choose
 %                       which ones you want to add to the Subject.mat. I
 %                       usually just do {'pseudo', 'wave'}, but you could
 %                       also do {'pseudo', [], 'task}
 %   cfg.sfoldername     { cell } with strings telling Matlab how to name
 %                       every subject folder based on the filename of the
-%                       raw data file. The filename: 
+%                       raw data file. The filename:
 %                       B00002_10m_facehouse_20181121_1019.bdf with
 %                       cfg.subjectfoldername = {'pseudo', 'wave'} will
-%                       create a B00002_10m folder in ./Subjects. 
+%                       create a B00002_10m folder in ./Subjects.
 %   cfg.pathsFcn        ' string ' filename of m-file to be read with all
 %                       necessary paths to run this function (default:
 %                       'setPaths').
@@ -39,7 +39,7 @@ function bv_createSubjectFolders_YOUth(cfg)
 %   cfg.overwrite       'yes/no' overwrite existing files? (default: 'no')
 %
 % optional fields:
-%   cfg.prevAnalysis    ' string ' to use in combination with 
+%   cfg.prevAnalysis    ' string ' to use in combination with
 %                       cfg.dataType = mat. Give the label of the previous
 %                       analysis (default: 'PREPROC')
 

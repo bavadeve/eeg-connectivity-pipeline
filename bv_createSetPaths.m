@@ -19,6 +19,10 @@ fprintf(fid, 'PATHS.FIGURES = ''%s''; %% path to figures  folder \n', [path2root
 fprintf(fid, 'PATHS.CONFIG = ''%s''; %% path to config folder \n', [path2root filesep 'config']);
 fprintf(fid, 'PATHS.SUMMARY = ''%s''; %% path to summary folder \n', [path2root filesep 'summary']);
 
+fprintf(fid, '\n%% set the paths for the eeg-connectivity-pipeline toolbox\n PATHS.EEGCONNECTIVITYPIPELINE = ''~/MatlabToolboxes/eeg-connectivity-pipeline'';\n');
+
+fprintf(fid, '\n%% set the paths for the BCT toolbox\n PATHS.BCT = ''~/MatlabToolboxes/BCT'';\n');
+
 fprintf(fid,'\n%% create, if necessary the folders \nif ~exist(PATHS.SUBJECTS, ''dir'')\n\tmkdir(PATHS.SUBJECTS)\nend\n');
 fprintf(fid,'if ~exist(PATHS.RESULTS, ''dir'')\n\tmkdir(PATHS.RESULTS)\nend\n');
 fprintf(fid,'if ~exist(PATHS.FIGURES, ''dir'')\n\tmkdir(PATHS.FIGURES)\nend\n');
@@ -34,6 +38,7 @@ fprintf(fid, 'addpath(PATHS.SUBFUNCTIONS)\n');
 fprintf(fid, 'addpath(pwd)\n');
 fprintf(fid, 'addpath(PATHS.FTPATH)\n');
 fprintf(fid, 'addpath(PATHS.FILES)\n');
+fprintf(fid, 'addpath(PATHS.EEGCONNECTIVITYPIPELINE)\n');
 fprintf(fid, 'ft_defaults\n');
 
 if exist([path2root filesep 'setPaths.m'], 'file') == 2
@@ -42,7 +47,6 @@ else
     filecreated = false(1);
     warning('No setOptions.m file created at given location')
 end
-    
 
 fclose(fid);
 
